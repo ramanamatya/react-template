@@ -1,12 +1,12 @@
-import webpack from 'webpack';
-import path from 'path';
-import CompressionPlugin from 'compression-webpack-plugin';
+const path = require('path'),
+  webpack = require('webpack'),
+  CompressionPlugin = require('compression-webpack-plugin');
 
 const APP_DIR = path.resolve(__dirname, 'src');
 const BUILD_DIR = path.resolve(__dirname, 'dist');
 const env = process.env.NODE_ENV || 'development';
 
-const config = {
+module.exports = {
   entry: `${APP_DIR}/index.jsx`,
   output: {
     path: BUILD_DIR,
@@ -19,7 +19,7 @@ const config = {
       },
     }),
     new CompressionPlugin({
-      asset: '[path].gz[query]',
+      filename: '[path].gz[query]',
       algorithm: 'gzip',
       test: /\.(js|html)$/,
       threshold: 10240,
@@ -36,12 +36,11 @@ const config = {
           options: {
             babelrc: false,
             presets: [
-              'es2015',
-              'react',
-              'stage-0',
+              '@babel/preset-env',
+              '@babel/preset-react',
             ],
             plugins: [
-              'transform-class-properties',
+              '@babel/plugin-proposal-class-properties',
             ],
           },
         },
@@ -57,5 +56,3 @@ const config = {
     ],
   },
 };
-
-export default config;
