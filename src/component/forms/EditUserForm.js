@@ -24,11 +24,11 @@ const EditUserForm = (props) => {
     >
       <div className="form-group">
         <label>Name</label>
-        <input type="text" className="form-control" name="name" value={user.name} onChange={handleInputChange} />
+        <input type="text" className="form-control" name="name" value={user.name} onChange={handleInputChange} autoComplete="off" required />
       </div>
       <div className="form-group">
         <label>Username</label>
-        <input type="text" name="username" className="form-control" value={user.username} onChange={handleInputChange} />
+        <input type="text" name="username" className="form-control" value={user.username} onChange={handleInputChange} autoComplete="off" required />
       </div>
       <button className="btn btn-primary" >Update user</button>
       <button onClick={() => props.setEditing(false)} className="btn btn-secondary">
