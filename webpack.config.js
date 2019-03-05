@@ -7,7 +7,7 @@ const BUILD_DIR = path.resolve(__dirname, 'dist');
 const env = process.env.NODE_ENV || 'development';
 
 module.exports = {
-  entry: `${APP_DIR}/index.jsx`,
+  entry: `${APP_DIR}/index.js`,
   output: {
     path: BUILD_DIR,
     filename: env === 'production' ? '[name].[chunkhash].js' : '[name].js',
